@@ -9,8 +9,9 @@ html(class="scroll-content")
   body
     div(class="xsm:w-full mx-auto")
       nav(class="bg-gray-800 flex justify-between lg:justify-start items-center")
-        div(class="logo p-2 w-1/6")
-          img(src="img/logo.png" width="100" alt="")
+        div(class="logo p-2 pl-4")
+          a(href="#" class="")
+            img(src="img/logo.png" alt="" class="w-14 h-10 md:w-20 md:h-14")
         div(class="links lg:block hidden")
           ul(class="menu flex items-center justify-center gap-5")
             li
@@ -25,7 +26,7 @@ html(class="scroll-content")
               a(href="#" class="rounded-full bg-red-500 text-gray-50 font-bold px-4 py-3 hover:text-gray-800 hover:bg-white transition duration-500") Buy Now
         
         div(class="block lg:hidden w-1/6 lg:w-4/6")
-          a(href="" class="link text-3xl" id="mobile-menu") &equiv;
+          a(href="" class="link text-3xl block" id="mobile-menu") &equiv;
           ul(class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-gray-800")
             li
               a(href="#" class="link") Home
@@ -120,8 +121,21 @@ html(class="scroll-content")
     script.
       const menuButton = document.querySelector('#mobile-menu')
       menuButton.addEventListener('click', e => {
+        e.preventDefault();
         const menu = document.querySelector('.mobile-links')
         menu.classList.toggle('hidden')
       })
+      const btns_menu = menuButton.parentNode.querySelectorAll('ul a');
+      btns_menu.forEach(botn =>{
+        botn.addEventListener('click', e => {
+          console.log("Me pinchaste")
+          const menu = document.querySelector('.mobile-links')
+          menu.classList.toggle('hidden')
+        })
+      })
+        
+    
+      console.log(btns_menu.length)
+
     script(src="js/scroll.js")
     
